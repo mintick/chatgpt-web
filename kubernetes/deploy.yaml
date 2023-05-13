@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: chatgpt-web
+  name: langegpt
   labels:
-    app: chatgpt-web
+    app: langegpt
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: chatgpt-web
+      app: langegpt
   strategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
-        app: chatgpt-web
+        app: langegpt
     spec:
       containers:
-        - image: chenzhaoyu94/chatgpt-web
-          name: chatgpt-web
+        - image: tantao89/langegpt
+          name: langegpt
           imagePullPolicy: Always
           ports:
             - containerPort: 3002
@@ -53,14 +53,14 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: chatgpt-web
-  name: chatgpt-web
+    app: langegpt
+  name: langegpt
 spec:
   ports:
-    - name: chatgpt-web
+    - name: langegpt
       port: 3002
       protocol: TCP
       targetPort: 3002
   selector:
-    app: chatgpt-web
+    app: langegpt
   type: ClusterIP
