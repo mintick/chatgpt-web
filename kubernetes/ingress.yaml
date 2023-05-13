@@ -4,7 +4,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/proxy-connect-timeout: '5'
-  name: chatgpt-web
+  name: langegpt
 spec:
   rules:
     - host: chatgpt.example.com
@@ -12,7 +12,7 @@ spec:
         paths:
           - backend:
               service:
-                name: chatgpt-web
+                name: langegpt
                 port:
                   number: 3002
             path: /
